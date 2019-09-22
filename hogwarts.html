@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="hogwarts.css" />
+  </head>
+
+  <body>
+    <div id="site">
+      <div id="popup">
+        <div class="exit"><button>X</button></div>
+        <article id="pop_content"></article>
+      </div>
+      <div id="alert">
+        <section id="alert_content">
+          <p class="p_top"></p>
+          <button class="stud_0"></button>
+          <button class="stud_1"></button>
+          <p class="p_bot"></p>
+        </section>
+      </div>
+      <header>
+        <button id="randomize">Randomize Bloodstatus</button>
+        <h1>Hogwarts Students 1991</h1>
+        <h2 id="house_stats"></h2>
+      </header>
+      <div class="animation_placeholder"><img src="" alt="" /></div>
+      <div class="animation_placeholder_expel"><img src="" alt="" /></div>
+      <div class="animation_placeholder_inq"><img src="" alt="" /></div>
+      <div class="animation_placeholder_inqrem"><img src="" alt="" /></div>
+      <nav>
+        <h2>Filter by:</h2>
+        <div class="button_wrap">
+          <button class="filter" data-house="Gryffindor">Gryffindor</button>
+          <button class="filter" data-house="Hufflepuff">Hufflepuff</button>
+          <button class="filter" data-house="Ravenclaw">Ravenclaw</button>
+          <button class="filter" data-house="Slytherin">Slytherin</button>
+          <button class="filter valgt" data-house="all">All</button>
+        </div>
+        <h2>Sort by:</h2>
+        <div class="button_wrap">
+          <button class="sort" data-sort="last_name">Last Name</button>
+          <button class="sort" data-sort="first_name">First Name</button>
+          <button class="sort" data-sort="house_sort">House</button>
+        </div>
+        <h2>Info:</h2>
+        <div class="button_wrap">
+          <p class="sort total">Total Students: <span class="totalstudents"></span></p>
+          <p class="sort total">Expelled Students: <span class="expelled"></span></p>
+        </div>
+      </nav>
+
+      <main id="list"></main>
+    </div>
+
+    <template id="student">
+      <article class="person">
+        <section class="info">
+          <h3 class="name"></h3>
+          <p class="house"></p>
+          <p class="status"></p>
+        </section>
+        <section class="student_buttons">
+          <div class="expell" data-action="remove">Expel(liarmus)!</div>
+          <div class="openpop" data-action="open_popup">Read More</div>
+          <div class="prefect" data-action="remove_prefect">Remove Prefect</div>
+          <div class="prefect" data-action="add_prefect">Make Prefect</div>
+          <div class="inq_squad" data-action="remove_squad">Remove from Inquisitorial</div>
+          <div class="inq_squad" data-action="add_squad">Add to Inquisitorial</div>
+        </section>
+      </article>
+    </template>
+
+    <!-- <template id="popup_temp">
+      <article class="person_info">
+        <h3 class="name"></h3>
+        <img class="student_img" alt="picture" />
+        <p class="house"></p>
+        <img class="crest" alt="crest" />
+      </article>
+    </template> -->
+
+    <script src="hogwarts.js"></script>
+  </body>
+</html>

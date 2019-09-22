@@ -1,0 +1,394 @@
+html[data-theme="Gryffindor"] {
+  --text-color: black;
+  --bg-color: linear-gradient(#9d2121, #7a1111);
+  --headline-color: black;
+  --subheadline-color: #f3c019;
+}
+
+html[data-theme="Hufflepuff"] {
+  --text-color: rgb(0, 0, 0);
+  --bg-color: linear-gradient(#f3de07, #d3c205);
+  --headline-color: rgb(88, 88, 88);
+  --subheadline-color: #0c0d08;
+}
+html[data-theme="Ravenclaw"] {
+  --text-color: #ffffff;
+  --bg-color: linear-gradient(#0b304a, #082235);
+  --headline-color: rgb(255, 255, 255);
+  --subheadline-color: #725438;
+}
+
+html[data-theme="Slytherin"] {
+  --text-color: #ffffff;
+  --bg-color: linear-gradient(#234723, #153115);
+  --headline-color: rgb(221, 221, 221);
+  --subheadline-color: #9e9996;
+}
+
+* {
+  font-family: monospace;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+}
+
+#site {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas:
+    "header header"
+    "nav main";
+  background-color: rgb(146, 146, 141);
+  background-image: url("img/hogwartsbg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+header {
+  grid-area: header;
+  margin: 10vh 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+h1 {
+  text-align: center;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.719);
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 200;
+}
+h2 {
+  font-family: sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+h3 {
+  font-weight: 200;
+  letter-spacing: 3px;
+  font-family: sans-serif;
+  margin: 0 10vw 0 10vw;
+  padding-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+/********* SIDE NAVIGATION/FILTERING/SORTING ***********/
+nav {
+  grid-area: nav;
+  position: fixed;
+  top: 30vh;
+  left: 2vw;
+  grid-template-columns: 1fr;
+}
+.button_wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+button {
+  padding: 1vw;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  transition: 0.9s ease-in;
+  font-size: 13px;
+}
+button:hover {
+  transform: scale(1.1);
+  color: rgb(187, 69, 0);
+}
+button:focus {
+  outline: 0;
+}
+
+.total,
+#house_stats {
+  font-size: 0.9em;
+  padding: 10px;
+  color: wheat;
+}
+#randomize {
+  text-decoration: underline;
+  letter-spacing: 3px;
+}
+
+/********* SIDE NAVIGATION/FILTERING/SORTING: END ***********/
+
+/********* STUDENT LIST ***********/
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #dfecf1d5;
+  margin-right: 3vw;
+  margin-bottom: 3vw;
+  grid-area: main;
+}
+
+main article {
+  text-align: center;
+  padding: 5vh 0;
+}
+
+.name {
+  font-weight: 400;
+}
+
+.student_buttons {
+  font-family: sans-serif;
+  font-size: 0.9em;
+  cursor: pointer;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(2, 1fr);
+  transition: 0.7s ease-in-out;
+}
+.student_buttons div:hover {
+  transform: scale(1.1);
+  color: rgb(187, 69, 0);
+}
+
+.status {
+  color: rgb(192, 47, 3);
+}
+
+/********* STUDENT LIST END ***********/
+
+/********* POP-UP: STUDENTS ***********/
+
+#popup {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.322);
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 2;
+}
+#pop_content {
+  height: 60vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin: 10vh 10vw;
+  border: 10px solid black;
+  align-items: center;
+  justify-items: center;
+  /* background-color: var(--bg-color); */
+  background-image: var(--bg-color);
+}
+
+#pop_content section > h2,
+#pop_content section > p {
+  padding: 5px;
+  text-align: center;
+}
+#pop_content .pop_info h2 {
+  font-size: 1rem;
+}
+
+#pop_content img {
+  width: 15vw;
+  height: 16vw;
+  margin-bottom: 8vh;
+}
+
+#pop_content h3 {
+  color: var(--subheadline-color);
+  font-family: monospace;
+  font-size: 1.5rem;
+  text-align: center;
+}
+#pop_content h2 {
+  color: var(--headline-color);
+}
+#pop_content p {
+  color: var(--text-color);
+}
+
+.exit {
+  box-sizing: border-box;
+  text-align: right;
+  padding-right: 1em;
+  position: absolute;
+  top: 10vh;
+  right: 10vw;
+}
+.exit button {
+  font-size: 2em;
+  font-family: sans-serif;
+}
+/********* POP-UP: STUDENTS ***********/
+
+/********* ALERT: PREFECTS ***********/
+#alert {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.884);
+  left: 0;
+  top: 0;
+  display: none;
+
+  z-index: 2;
+  text-align: center;
+}
+#alert_content {
+  text-align: center;
+  margin: 20vh auto;
+  width: 60vw;
+  /* padding: 20vw; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+#alert_content > p {
+  grid-column: span 2;
+  font-size: 1.8rem;
+  margin-bottom: 10vh;
+}
+#alert_content > button {
+  font-family: sans-serif;
+  letter-spacing: 3px;
+  padding: 10px;
+  font-size: 1.6rem;
+}
+#alert_content > button:hover {
+  text-decoration: underline;
+}
+/********* ALERT: PREFECTS// END ***********/
+
+/********* ANIMATIONS: EXPELL ***********/
+
+.animation_placeholder img,
+.animation_placeholder_expel img,
+.animation_placeholder_inq img,
+.animation_placeholder_inqrem img {
+  position: fixed;
+  z-index: 3;
+  width: 30%;
+  left: 50vw;
+  top: 30vh;
+}
+.shake_slow {
+  animation: shake 2.3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.shake {
+  animation: shake 1.1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-10px, -20px, 15px);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(20px, 30px, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-40px, -30px, -20px);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(40px, 10px, 0);
+  }
+}
+
+/********* ANIMATIONS: INQ SQUAD ***********/
+
+.supersize {
+  animation: supersize 2.1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes supersize {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg) scale(1.5);
+    transform-origin: 50% 30%;
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg) scale(2);
+    transform-origin: 50% 30%;
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg) scale(2.5);
+    transform-origin: 50% 30%;
+  }
+  30% {
+    transform: translate(13px, 12px) rotate(0deg) scale(3);
+    transform-origin: 50% 30%;
+  }
+  40% {
+    transform: translate(20px, -10px) rotate(1deg) scale(3.5);
+    transform-origin: 50% 30%;
+  }
+  50% {
+    transform: translate(-10px, 20px) rotate(-1deg) scale(4);
+    transform-origin: 50% 30%;
+  }
+  60% {
+    transform: translate(-30px, 10px) rotate(0deg) scale(4.5);
+    transform-origin: 50% 30%;
+  }
+  70% {
+    transform: translate(30px, 10px) rotate(-1deg) scale(5);
+    transform-origin: 50% 30%;
+  }
+  80% {
+    transform: translate(-10px, -10px) rotate(1deg) scale(5.5);
+    transform-origin: 50% 30%;
+  }
+  90% {
+    transform: translate(10px, 20px) rotate(0deg) scale(6);
+    transform-origin: 50% 30%;
+  }
+  100% {
+    transform: translate(10px, -20px) rotate(-1deg) scale(6.5);
+    transform-origin: 50% 30%;
+  }
+}
+
+.spin {
+  animation: spin 2.1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin_scale {
+  animation: spin_scale 2.1s both;
+}
+
+@keyframes spin_scale {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(5);
+  }
+}
